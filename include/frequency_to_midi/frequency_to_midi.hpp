@@ -6,7 +6,7 @@ const int min_midi = 40;
 const int max_midi = 86;
 
 struct Triple {
-    int num;
+    size_t num;
     int midi;
     double duration;
 };

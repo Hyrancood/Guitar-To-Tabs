@@ -1,0 +1,17 @@
+# CMake build artifacts
+/build/
+/CMakeFiles/
+/Makefile
+/CMakeCache.txt
+/*.cmake
+/*.vcxproj*
+/*.sln
+
+# Object and binary files
+*.o
+*.obj
+*.exe
+*.out
+
+# Misc
+*.log

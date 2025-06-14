@@ -1,6 +1,7 @@
-#include "frequency_to_midi.hpp"
+#include "frequency_to_midi/frequency_to_midi.hpp"
 #include <cmath>
 #include <stdexcept>
+#include <iostream>
 
 int frequency_to_midi(double freq) {
     if (freq < 0) {
@@ -21,13 +22,17 @@ int frequency_to_midi(double freq) {
 
 double duration_sum(const std::vector<Triple>& midi_duration) {
     double result = 0.0;
-    for (Triple t : midi_duration) {
+    for (const Triple &t : midi_duration) {
         result += t.duration;
     }
     return result;
 }
 
 int max_duration(const std::vector<Triple>& midi_duration) {
+    if (midi_duration.empty()) {
+        throw std::invalid_argument("midi_duration vector is empty");
+    }
+
     int index_max = 0;
     for (size_t i = 0; i < midi_duration.size(); ++i) {
         if (midi_duration[i].duration > midi_duration[index_max].duration) {
@@ -41,6 +46,11 @@ std::vector<std::pair<int, int>> get_midi_beats(std::vector<std::pair<double, do
     if (bpm <= 0) {
         throw std::invalid_argument("BPM must be positive");
     }
+    for (const auto& fd : frequency_duration) {
+        if (fd.second <= 0) {
+            throw std::invalid_argument("Duration must be positive");
+        }
+    }
 
     double len16 = 15.0/bpm;
 
@@ -49,6 +59,7 @@ std::vector<std::pair<int, int>> get_midi_beats(std::vector<std::pair<double, do
         midi_duration.push_back({i, frequency_to_midi(frequency_duration[i].first), frequency_duration[i].second});
     }
 
+    double full_len = duration_sum(midi_duration);
     midi_duration.push_back({midi_duration.size(),-1,len16*2});
     std::vector<std::pair<int,int>> midi_16beats; 
     std::vector<Triple> temporary;
@@ -74,9 +85,13 @@ std::vector<std::pair<int, int>> get_midi_beats(std::vector<std::pair<double, do
             midi_16beats.push_back({temporary[max_duration(temporary)].num,temporary[max_duration(temporary)].midi});
         }
     }
+
+    if (!midi_16beats.empty() && midi_16beats[midi_16beats.size()-1].second == -1 && full_len/len16 < static_cast<double>(midi_16beats.size())-0.5) {
+        midi_16beats.pop_back();
+    }
     
     std::vector<std::pair<int,int>> midi_beats;
-    for (size_t i = 0; i < midi_16beats.size(); ++i) {
+    for (int i = 0; i < midi_16beats.size(); ++i) {
         if (i!=0 && midi_16beats[i-1].first==midi_16beats[i].first) {
             midi_beats[midi_beats.size()-1].second+=1;
         } else {
