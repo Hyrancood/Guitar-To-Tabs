@@ -37,12 +37,12 @@ TEST_CASE("frequency_to_midi exceptions") {
 
 TEST_CASE("duration_sum correct input") {
     SUBCASE("empty vector") {
-        std::vector<Triple> input;
+        std::vector<NoteDuration> input;
         CHECK(duration_sum(input) == doctest::Approx(0.0));
     }
 
     SUBCASE("basic") {
-        std::vector<Triple> input = {
+        std::vector<NoteDuration> input = {
             {0, 60, 0.5},
             {1, 62, 1.0},
             {2, 64, 0.25}
@@ -52,7 +52,7 @@ TEST_CASE("duration_sum correct input") {
 }
 
 TEST_CASE("max_duration correct input") {
-    std::vector<Triple> input = {
+    std::vector<NoteDuration> input = {
         {0, 60, 0.5},
         {1, 62, 1.2},
         {2, 64, 0.8}
@@ -61,7 +61,7 @@ TEST_CASE("max_duration correct input") {
 }
 
 TEST_CASE("max_duration exceptions (empty vector)") {
-        std::vector<Triple> empty;
+        std::vector<NoteDuration> empty;
         CHECK_THROWS_AS(max_duration(empty), std::invalid_argument);
 }
 

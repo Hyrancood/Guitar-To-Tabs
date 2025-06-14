@@ -1,7 +1,6 @@
 #include "frequency_to_midi/frequency_to_midi.hpp"
 #include <cmath>
 #include <stdexcept>
-#include <iostream>
 
 int frequency_to_midi(double freq) {
     if (freq < 0) {
@@ -20,15 +19,15 @@ int frequency_to_midi(double freq) {
     return midi;
 }
 
-double duration_sum(const std::vector<Triple>& midi_duration) {
+double duration_sum(const std::vector<NoteDuration>& midi_duration) {
     double result = 0.0;
-    for (const Triple &t : midi_duration) {
+    for (const NoteDuration &t : midi_duration) {
         result += t.duration;
     }
     return result;
 }
 
-int max_duration(const std::vector<Triple>& midi_duration) {
+int max_duration(const std::vector<NoteDuration>& midi_duration) {
     if (midi_duration.empty()) {
         throw std::invalid_argument("midi_duration vector is empty");
     }
@@ -54,7 +53,7 @@ std::vector<std::pair<int, int>> get_midi_beats(std::vector<std::pair<double, do
 
     double len16 = 15.0/bpm;
 
-    std::vector<Triple> midi_duration;
+    std::vector<NoteDuration> midi_duration;
     for (size_t i = 0; i < frequency_duration.size(); ++i) {
         midi_duration.push_back({i, frequency_to_midi(frequency_duration[i].first), frequency_duration[i].second});
     }
@@ -62,7 +61,7 @@ std::vector<std::pair<int, int>> get_midi_beats(std::vector<std::pair<double, do
     double full_len = duration_sum(midi_duration);
     midi_duration.push_back({midi_duration.size(),-1,len16*2});
     std::vector<std::pair<int,int>> midi_16beats; 
-    std::vector<Triple> temporary;
+    std::vector<NoteDuration> temporary;
     double remainder = len16;
     while (midi_duration.size() > 1) {
         remainder = len16;
