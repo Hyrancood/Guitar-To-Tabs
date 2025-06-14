@@ -13,12 +13,16 @@ add_subdirectory(external)
 # Главная библиотека
 add_library(guitar_to_tabs STATIC
     src/frequency_to_midi.cpp
+    src/midi_to_tabs.cpp
 )
 
 # Тесты
 enable_testing()
 
-add_executable(test_runner tests/test_frequency_to_midi.cpp)
+add_executable(test_runner
+    tests/test_frequency_to_midi.cpp
+    tests/test_midi_to_tabs.cpp
+)
 target_link_libraries(test_runner PRIVATE guitar_to_tabs doctest)
 
 add_test(NAME GuitarToTabsTests COMMAND test_runner)
