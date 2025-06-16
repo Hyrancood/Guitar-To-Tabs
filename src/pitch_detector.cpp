@@ -37,8 +37,9 @@ std::vector<PitchResult> PitchDetector::detectYIN(const std::vector<float>& sign
             }
         }
         float freq = 0.0f;
-        if (tauEstimate > 0) {
+        if (tauEstimate > 0 && cmnd[tauEstimate] < threshold) {
             freq = sampleRate / tauEstimate;
+            if (freq > sampleRate / 4) freq = 0.0f;
         }
         results.push_back({freq, start, static_cast<size_t>(windowSize)});
     }
