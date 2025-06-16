@@ -14,6 +14,7 @@ add_subdirectory(external)
 add_library(guitar_to_tabs STATIC
     src/frequency_to_midi.cpp
     src/FIRFilter.cpp
+    src/PitchDetector.cpp
 )
 
 # Тесты
@@ -23,7 +24,11 @@ add_executable(test_runner tests/test_frequency_to_midi.cpp)
 target_link_libraries(test_runner PRIVATE guitar_to_tabs doctest)
 
 add_executable(test_fir_filter tests/test_fir_filter.cpp)
-target_link_libraries(test_fir_filter PRIVATE guitar_to_tabs)
+target_link_libraries(test_fir_filter PRIVATE guitar_to_tabs doctest)
+
+add_executable(test_pitch_detector tests/test_pitch_detector.cpp)
+target_link_libraries(test_pitch_detector PRIVATE guitar_to_tabs doctest)
 
 add_test(NAME GuitarToTabsTests COMMAND test_runner)
 add_test(NAME GuitarToTabsFIRFilterTests COMMAND test_fir_filter)
+add_test(NAME GuitarToTabsPitchDetectorTests COMMAND test_pitch_detector)

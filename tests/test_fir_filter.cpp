@@ -9,7 +9,7 @@ std::vector<float> generate_sine(float freq, float sampleRate, float duration) {
     int N = static_cast<int>(sampleRate * duration);
     std::vector<float> data(N);
     for (int i = 0; i < N; ++i) {
-        data[i] = std::sin(6.283 * freq * i / sampleRate);
+        data[i] = std::sin(6.283f * freq * i / sampleRate);
     }
     return data;
 }

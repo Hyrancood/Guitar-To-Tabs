@@ -1,4 +1,4 @@
-#include "FIRFilter.hpp"
+#include "fir_filter.hpp"
 #include <vector>
 #include <numeric>
 
