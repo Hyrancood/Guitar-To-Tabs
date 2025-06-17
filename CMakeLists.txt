@@ -6,12 +6,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Пути к заголовочным файлам
 include_directories(include)
+include_directories(${CMAKE_BINARY_DIR}/_deps/minimp3-src)
 
 # === Подключение doctest через FetchContent ===
 add_subdirectory(external)
 
 # Главная библиотека
 add_library(guitar_to_tabs STATIC
+    src/input.cpp
     src/frequency_to_midi.cpp
     src/midi_to_tabs.cpp
     src/fir_filter.cpp
@@ -21,6 +23,9 @@ add_library(guitar_to_tabs STATIC
 
 # Тесты
 enable_testing()
+
+add_executable(test_input tests/test_input.cpp)
+target_link_libraries(test_input PRIVATE guitar_to_tabs doctest)
 
 add_executable(test_runner
     tests/test_frequency_to_midi.cpp
@@ -37,6 +42,7 @@ target_link_libraries(test_pitch_detector PRIVATE guitar_to_tabs doctest)
 add_executable(test_note_segment tests/test_note_segment.cpp)
 target_link_libraries(test_note_segment PRIVATE guitar_to_tabs doctest)
 
+add_test(NAME GuitarToTabsInputTests COMMAND test_input)
 add_test(NAME GuitarToTabsTests COMMAND test_runner)
 add_test(NAME GuitarToTabsFIRFilterTests COMMAND test_fir_filter)
 add_test(NAME GuitarToTabsPitchDetectorTests COMMAND test_pitch_detector)
