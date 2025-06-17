@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['note_5fsegment_2ecpp_0',['note_segment.cpp',['../note__segment_8cpp.html',1,'']]],
-  ['note_5fsegment_2ehpp_1',['note_segment.hpp',['../note__segment_8hpp.html',1,'']]],
-  ['noteduration_2',['NoteDuration',['../struct_note_duration.html',1,'']]],
-  ['notesegment_3',['NoteSegment',['../struct_note_segment.html',1,'']]],
-  ['num_4',['num',['../struct_note_duration.html#a48661554ebab4843e984142168ef74f0',1,'NoteDuration']]]
+  ['length_0',['length',['../struct_pitch_result.html#a4dbb4348fc9f20080402fda905024782',1,'PitchResult']]],
+  ['loadmp3_1',['loadMP3',['../class_audio_decoder.html#aec8d79ddc6136daf37db0ed9cf66fad8',1,'AudioDecoder']]]
 ];

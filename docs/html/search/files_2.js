@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['note_5fsegment_2ecpp_0',['note_segment.cpp',['../note__segment_8cpp.html',1,'']]],
-  ['note_5fsegment_2ehpp_1',['note_segment.hpp',['../note__segment_8hpp.html',1,'']]]
+  ['main_2ecpp_0',['main.cpp',['../main_8cpp.html',1,'']]],
+  ['midi_5fto_5ftabs_2ecpp_1',['midi_to_tabs.cpp',['../midi__to__tabs_8cpp.html',1,'']]],
+  ['midi_5fto_5ftabs_2ehpp_2',['midi_to_tabs.hpp',['../midi__to__tabs_8hpp.html',1,'']]]
 ];

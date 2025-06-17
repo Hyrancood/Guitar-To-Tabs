@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['duration_0',['duration',['../struct_note_duration.html#af2cb1e790f7170fcb523b1c343c6c801',1,'NoteDuration::duration'],['../struct_note_segment.html#a04cf0aed5a0d86818b6eca5017c20939',1,'NoteSegment::duration']]]
+  ['amplitudes_0',['amplitudes',['../struct_audio_analyzer_1_1_amplitude_analysis.html#a89c1949431f971dbe05f7bff4a7053ba',1,'AudioAnalyzer::AmplitudeAnalysis']]],
+  ['amplitudespectrum_1',['amplitudeSpectrum',['../struct_audio_analyzer_1_1_amplitude_analysis.html#ae8fc5b7875b33f128ffdd3363f31545a',1,'AudioAnalyzer::AmplitudeAnalysis']]],
+  ['averageamplitude_2',['averageAmplitude',['../struct_audio_analyzer_1_1_amplitude_analysis.html#acc39b719ec785e446e53ef77941a3688',1,'AudioAnalyzer::AmplitudeAnalysis']]]
 ];

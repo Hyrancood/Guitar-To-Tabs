@@ -92,13 +92,19 @@ $(function(){initNavTree('class_f_i_r_filter.html','','class_f_i_r_filter-member
 </div><!--header-->
 <div class="contents">
 
+<p>Реализует FIR-фильтр для подавления шумов в аудиосигнале.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="fir__filter_8hpp_source.html">fir_filter.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a18f40ab56e4f468544d23e1013abbfe9" id="r_a18f40ab56e4f468544d23e1013abbfe9"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18f40ab56e4f468544d23e1013abbfe9">apply</a> (const std::vector&lt; float &gt; &amp;input, int windowSize)</td></tr>
+<tr class="memdesc:a18f40ab56e4f468544d23e1013abbfe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Применяет FIR-фильтр к сигналу.  <br /></td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Реализует FIR-фильтр для подавления шумов в аудиосигнале. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a18f40ab56e4f468544d23e1013abbfe9" name="a18f40ab56e4f468544d23e1013abbfe9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a18f40ab56e4f468544d23e1013abbfe9">&#9670;&#160;</a></span>apply()</h2>
 
@@ -125,6 +131,16 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Применяет FIR-фильтр к сигналу. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>Входной сигнал (амплитуды). </td></tr>
+    <tr><td class="paramname">windowSize</td><td>Размер окна усреднения (количество сэмплов). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Отфильтрованный сигнал (амплитуды). </dd></dl>
 
 </div>
 </div>

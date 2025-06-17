@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['noteduration_0',['NoteDuration',['../struct_note_duration.html',1,'']]],
-  ['notesegment_1',['NoteSegment',['../struct_note_segment.html',1,'']]]
+  ['firfilter_0',['FIRFilter',['../class_f_i_r_filter.html',1,'']]]
 ];

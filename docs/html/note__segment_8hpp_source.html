@@ -93,26 +93,23 @@ $(function(){initNavTree('note__segment_8hpp_source.html','',''); });
 <div class="contents">
 <a href="note__segment_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="pitch__detector_8hpp.html">pitch_detector.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="foldopen" id="foldopen00006" data-start="{" data-end="};">
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="struct_note_segment.html">    6</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct_note_segment.html">NoteSegment</a> {</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="struct_note_segment.html#a2a250eab9d4a969dc66277a3f5c2b859">    7</a></span>  <span class="keywordtype">float</span> <a class="code hl_variable" href="struct_note_segment.html#a2a250eab9d4a969dc66277a3f5c2b859">frequency</a>;</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="struct_note_segment.html#a04cf0aed5a0d86818b6eca5017c20939">    8</a></span>  <span class="keywordtype">float</span> <a class="code hl_variable" href="struct_note_segment.html#a04cf0aed5a0d86818b6eca5017c20939">duration</a>;  <span class="comment">// в секундах</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>};</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="pitch__detector_8hpp.html">pitch_detector.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span></div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="struct_note_segment.html">   13</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct_note_segment.html">NoteSegment</a> {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="struct_note_segment.html#a2a250eab9d4a969dc66277a3f5c2b859">   14</a></span>  <span class="keywordtype">float</span> <a class="code hl_variable" href="struct_note_segment.html#a2a250eab9d4a969dc66277a3f5c2b859">frequency</a>;   </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="struct_note_segment.html#a04cf0aed5a0d86818b6eca5017c20939">   15</a></span>  <span class="keywordtype">float</span> <a class="code hl_variable" href="struct_note_segment.html#a04cf0aed5a0d86818b6eca5017c20939">duration</a>;    </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>};</div>
 </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">// freqTolerance — частоты считаются одинаковыми, если разница меньше этого</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// значения (Гц)</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>std::vector&lt;NoteSegment&gt; <a class="code hl_function" href="note__segment_8hpp.html#a46094a10f5338689485b17c5b5d2195b">extract_note_segments</a>(</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">const</span> std::vector&lt;PitchResult&gt;&amp; pitches, <span class="keywordtype">float</span> sampleRate,</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordtype">float</span> freqTolerance = 1.0f);</div>
-<div class="ttc" id="anote__segment_8hpp_html_a46094a10f5338689485b17c5b5d2195b"><div class="ttname"><a href="note__segment_8hpp.html#a46094a10f5338689485b17c5b5d2195b">extract_note_segments</a></div><div class="ttdeci">std::vector&lt; NoteSegment &gt; extract_note_segments(const std::vector&lt; PitchResult &gt; &amp;pitches, float sampleRate, float freqTolerance=1.0f)</div><div class="ttdef"><b>Definition</b> note_segment.cpp:5</div></div>
-<div class="ttc" id="apitch__detector_8hpp_html"><div class="ttname"><a href="pitch__detector_8hpp.html">pitch_detector.hpp</a></div></div>
-<div class="ttc" id="astruct_note_segment_html"><div class="ttname"><a href="struct_note_segment.html">NoteSegment</a></div><div class="ttdef"><b>Definition</b> note_segment.hpp:6</div></div>
-<div class="ttc" id="astruct_note_segment_html_a04cf0aed5a0d86818b6eca5017c20939"><div class="ttname"><a href="struct_note_segment.html#a04cf0aed5a0d86818b6eca5017c20939">NoteSegment::duration</a></div><div class="ttdeci">float duration</div><div class="ttdef"><b>Definition</b> note_segment.hpp:8</div></div>
-<div class="ttc" id="astruct_note_segment_html_a2a250eab9d4a969dc66277a3f5c2b859"><div class="ttname"><a href="struct_note_segment.html#a2a250eab9d4a969dc66277a3f5c2b859">NoteSegment::frequency</a></div><div class="ttdeci">float frequency</div><div class="ttdef"><b>Definition</b> note_segment.hpp:7</div></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>std::vector&lt;NoteSegment&gt; <a class="code hl_function" href="note__segment_8hpp.html#a46094a10f5338689485b17c5b5d2195b">extract_note_segments</a>(</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keyword">const</span> std::vector&lt;PitchResult&gt;&amp; pitches, <span class="keywordtype">float</span> sampleRate,</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">float</span> freqTolerance = 1.0f);</div>
+<div class="ttc" id="anote__segment_8hpp_html_a46094a10f5338689485b17c5b5d2195b"><div class="ttname"><a href="note__segment_8hpp.html#a46094a10f5338689485b17c5b5d2195b">extract_note_segments</a></div><div class="ttdeci">std::vector&lt; NoteSegment &gt; extract_note_segments(const std::vector&lt; PitchResult &gt; &amp;pitches, float sampleRate, float freqTolerance=1.0f)</div><div class="ttdoc">Группирует последовательные окна с одинаковой (или близкой) частотой в сегменты.</div><div class="ttdef"><b>Definition</b> note_segment.cpp:5</div></div>
+<div class="ttc" id="apitch__detector_8hpp_html"><div class="ttname"><a href="pitch__detector_8hpp.html">pitch_detector.hpp</a></div><div class="ttdoc">Модуль для извлечения основного тона (pitch detection) из аудиосигнала.</div></div>
+<div class="ttc" id="astruct_note_segment_html"><div class="ttname"><a href="struct_note_segment.html">NoteSegment</a></div><div class="ttdoc">Описывает сегмент (ноту): частота и длительность звучания.</div><div class="ttdef"><b>Definition</b> note_segment.hpp:13</div></div>
+<div class="ttc" id="astruct_note_segment_html_a04cf0aed5a0d86818b6eca5017c20939"><div class="ttname"><a href="struct_note_segment.html#a04cf0aed5a0d86818b6eca5017c20939">NoteSegment::duration</a></div><div class="ttdeci">float duration</div><div class="ttdoc">Длительность (секунды)</div><div class="ttdef"><b>Definition</b> note_segment.hpp:15</div></div>
+<div class="ttc" id="astruct_note_segment_html_a2a250eab9d4a969dc66277a3f5c2b859"><div class="ttname"><a href="struct_note_segment.html#a2a250eab9d4a969dc66277a3f5c2b859">NoteSegment::frequency</a></div><div class="ttdeci">float frequency</div><div class="ttdoc">Частота (Гц)</div><div class="ttdef"><b>Definition</b> note_segment.hpp:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

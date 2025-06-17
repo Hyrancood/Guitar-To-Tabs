@@ -6,7 +6,6 @@
 
 #include "fir_filter.hpp"
 
-// Генерация синусоиды
 std::vector<float> generate_sine(float freq, float sampleRate, float duration) {
   int N = static_cast<int>(sampleRate * duration);
   std::vector<float> data(N);
@@ -16,15 +15,13 @@ std::vector<float> generate_sine(float freq, float sampleRate, float duration) {
   return data;
 }
 
-// Генерация ступенчатого сигнала (имитация атаки/спада)
 std::vector<float> generate_step(float value, int N) {
   return std::vector<float>(N, value);
 }
 
 TEST_CASE("FIRFilter сглаживает синусоиду") {
-  auto input = generate_sine(440.0f, 44100.0f, 0.01f);  // 10 мс синусоиды
+  auto input = generate_sine(440.0f, 44100.0f, 0.01f);
   auto output = FIRFilter::apply(input, 5);
-  // Проверяем, что среднее значение не сильно отличается
   float avg_in = 0, avg_out = 0;
   for (float v : input) avg_in += v;
   for (float v : output) avg_out += v;
@@ -35,9 +32,8 @@ TEST_CASE("FIRFilter сглаживает синусоиду") {
 
 TEST_CASE("FIRFilter сглаживает ступенчатый сигнал") {
   auto input = generate_step(1.0f, 100);
-  input[50] = 10.0f;  // выброс
+  input[50] = 10.0f; 
   auto output = FIRFilter::apply(input, 7);
-  // После фильтрации выброс должен сгладиться
   CHECK(output[50] < 5.0f);
   CHECK(output[50] > 1.0f);
 }

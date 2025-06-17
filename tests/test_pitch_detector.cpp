@@ -5,30 +5,25 @@
 #include <vector>
 
 #include "pitch_detector.hpp"
-#ifndef M_PI
-#define M_PI 3.14159265358979323846
-#endif
 
-// Генерация синусоиды
 std::vector<float> generate_sine(float freq, float sampleRate, float duration) {
   int N = static_cast<int>(sampleRate * duration);
   std::vector<float> data(N);
   for (int i = 0; i < N; ++i) {
-    data[i] = static_cast<float>(std::sin(2 * M_PI * freq * i / sampleRate));
+    data[i] = static_cast<float>(std::sin(6.283 * freq * i / sampleRate));
   }
   return data;
 }
 
-// Генерация двухтонального сигнала (имитация смены ноты)
 std::vector<float> generate_two_tone(float freq1, float freq2, float sampleRate,
                                      float duration) {
   int N = static_cast<int>(sampleRate * duration);
   std::vector<float> data(N);
   for (int i = 0; i < N / 2; ++i) {
-    data[i] = static_cast<float>(std::sin(2 * M_PI * freq1 * i / sampleRate));
+    data[i] = static_cast<float>(std::sin(6.283 * freq1 * i / sampleRate));
   }
   for (int i = N / 2; i < N; ++i) {
-    data[i] = static_cast<float>(std::sin(2 * M_PI * freq2 * i / sampleRate));
+    data[i] = static_cast<float>(std::sin(6.283 * freq2 * i / sampleRate));
   }
   return data;
 }

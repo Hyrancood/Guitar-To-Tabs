@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['length_0',['length',['../struct_pitch_result.html#a4dbb4348fc9f20080402fda905024782',1,'PitchResult']]]
+  ['duration_0',['duration',['../struct_note_duration.html#af2cb1e790f7170fcb523b1c343c6c801',1,'NoteDuration::duration'],['../struct_note_segment.html#a04cf0aed5a0d86818b6eca5017c20939',1,'NoteSegment::duration']]]
 ];

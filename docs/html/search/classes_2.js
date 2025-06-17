@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['pitchdetector_0',['PitchDetector',['../class_pitch_detector.html',1,'']]],
-  ['pitchresult_1',['PitchResult',['../struct_pitch_result.html',1,'']]]
+  ['noteduration_0',['NoteDuration',['../struct_note_duration.html',1,'']]],
+  ['notesegment_1',['NoteSegment',['../struct_note_segment.html',1,'']]]
 ];

@@ -91,6 +91,9 @@ $(function(){initNavTree('note__segment_8hpp.html','',''); });
   <div class="headertitle"><div class="title">note_segment.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Модуль для группировки извлечённых высот в музыкальные сегменты (ноты).  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;vector&gt;</code><br />
 <code>#include &quot;<a class="el" href="pitch__detector_8hpp_source.html">pitch_detector.hpp</a>&quot;</code><br />
 </div>
@@ -99,12 +102,16 @@ $(function(){initNavTree('note__segment_8hpp.html','',''); });
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:NoteSegment" id="r_NoteSegment"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_note_segment.html">NoteSegment</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Описывает сегмент (ноту): частота и длительность звучания.  <a href="struct_note_segment.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a46094a10f5338689485b17c5b5d2195b" id="r_a46094a10f5338689485b17c5b5d2195b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="struct_note_segment.html">NoteSegment</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46094a10f5338689485b17c5b5d2195b">extract_note_segments</a> (const std::vector&lt; <a class="el" href="struct_pitch_result.html">PitchResult</a> &gt; &amp;pitches, float sampleRate, float freqTolerance=1.0f)</td></tr>
+<tr class="memdesc:a46094a10f5338689485b17c5b5d2195b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Группирует последовательные окна с одинаковой (или близкой) частотой в сегменты.  <br /></td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Модуль для группировки извлечённых высот в музыкальные сегменты (ноты). </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
 <a id="a46094a10f5338689485b17c5b5d2195b" name="a46094a10f5338689485b17c5b5d2195b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a46094a10f5338689485b17c5b5d2195b">&#9670;&#160;</a></span>extract_note_segments()</h2>
 
@@ -128,6 +135,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Группирует последовательные окна с одинаковой (или близкой) частотой в сегменты. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pitches</td><td>Результаты pitch detection (<a class="el" href="struct_pitch_result.html" title="Результат pitch detection для одного окна: частота, начало, длина окна.">PitchResult</a>). </td></tr>
+    <tr><td class="paramname">sampleRate</td><td>Частота дискретизации. </td></tr>
+    <tr><td class="paramname">freqTolerance</td><td>Порог для объединения частот (Гц). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Вектор сегментов (частота, длительность). </dd></dl>
 
 </div>
 </div>

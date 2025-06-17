@@ -15,19 +15,15 @@ std::vector<NoteSegment> extract_note_segments(
   for (size_t i = 1; i < pitches.size(); ++i) {
     float freq = pitches[i].frequency;
     if (std::abs(freq - prevFreq) < freqTolerance) {
-      // Продолжаем сегмент
       endSample = pitches[i].startSample + pitches[i].length;
     } else {
-      // Завершаем сегмент
       float duration = (endSample - startSample) / sampleRate;
       segments.push_back({prevFreq, duration});
-      // Начинаем новый
       prevFreq = freq;
       startSample = pitches[i].startSample;
       endSample = startSample + pitches[i].length;
     }
   }
-  // Добавить последний сегмент
   float duration = (endSample - startSample) / sampleRate;
   segments.push_back({prevFreq, duration});
   return segments;

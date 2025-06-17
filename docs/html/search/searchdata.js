@@ -1,10 +1,11 @@
 var indexSectionsWithContent =
 {
-  0: "adefglmnprs",
-  1: "fnp",
-  2: "fmnp",
-  3: "adefgmr",
-  4: "dflmns"
+  0: "acdefgilmnprstv",
+  1: "afnp",
+  2: "fimnp",
+  3: "adefglmprv",
+  4: "acdflmnst",
+  5: "mn"
 };
 
 var indexSectionNames =
@@ -13,7 +14,8 @@ var indexSectionNames =
   1: "classes",
   2: "files",
   3: "functions",
-  4: "variables"
+  4: "variables",
+  5: "defines"
 };
 
 var indexSectionLabels =
@@ -22,6 +24,7 @@ var indexSectionLabels =
   1: "Classes",
   2: "Files",
   3: "Functions",
-  4: "Variables"
+  4: "Variables",
+  5: "Macros"
 };
 
