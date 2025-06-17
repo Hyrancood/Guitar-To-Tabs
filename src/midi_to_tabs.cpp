@@ -10,6 +10,7 @@ std::vector<std::array<int, 3>> read_range(std::istream& in) {
   std::vector<std::array<int, 3>> result;
   std::string line;
 
+  std::cout << "Enter fret ranges: [min.fret max.fret duration_in_bar] (print 'stop' to end): " << line << std::endl;
   while (std::getline(in, line)) {
     if (line == "stop") {
       break;

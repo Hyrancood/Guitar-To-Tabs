@@ -51,7 +51,6 @@ std::vector<std::pair<int, int>> get_midi_beats(
     throw std::invalid_argument("BPM must be positive");
   }
   for (const auto& fd : frequency_duration) {
-    std::cout << "[get_midi_beats] freq: " << fd.first << ", dur: " << fd.second << std::endl;
     if (fd.second <= 0) {
       throw std::invalid_argument("Duration must be positive");
     }
