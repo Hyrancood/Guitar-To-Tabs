@@ -1,0 +1,21 @@
+\doxysection{note\+\_\+segment.\+hpp}
+\hypertarget{note__segment_8hpp_source}{}\label{note__segment_8hpp_source}\index{include/note\_segment.hpp@{include/note\_segment.hpp}}
+\mbox{\hyperlink{note__segment_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{pitch__detector_8hpp}{pitch\_detector.hpp}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_note_segment}{NoteSegment}}\ \{}
+\DoxyCodeLine{00007\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_note_segment_a2a250eab9d4a969dc66277a3f5c2b859}{frequency}};}
+\DoxyCodeLine{00008\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_note_segment_a04cf0aed5a0d86818b6eca5017c20939}{duration}};\ \ \textcolor{comment}{//\ в\ секундах}}
+\DoxyCodeLine{00009\ \};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ freqTolerance\ —\ частоты\ считаются\ одинаковыми,\ если\ разница\ меньше\ этого}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ значения\ (Гц)}}
+\DoxyCodeLine{00013\ std::vector<NoteSegment>\ \mbox{\hyperlink{note__segment_8hpp_a46094a10f5338689485b17c5b5d2195b}{extract\_note\_segments}}(}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<PitchResult>\&\ pitches,\ \textcolor{keywordtype}{float}\ sampleRate,}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{float}\ freqTolerance\ =\ 1.0f);}
+
+\end{DoxyCode}
