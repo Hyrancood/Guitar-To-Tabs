@@ -37,21 +37,9 @@ int main(int argc, char* argv[]) {
     auto pitches = PitchDetector::detectYIN(filtered, audio.sampleRate, windowSize, hopSize);
     std::cout << "pitched " << pitches.size() << " pitch results." << std::endl;
 
-    // Вывод всех высот после pitch detection
-    std::cout << "\nPitch detection results (frequency in Hz):\n";
-    for (size_t i = 0; i < pitches.size(); ++i) {
-        std::cout << "Window " << i << ": " << pitches[i].frequency << " Hz" << std::endl;
-    }
-
     // 5. Сегментация нот
     auto notes = extract_note_segments(pitches, audio.sampleRate);
     std::cout << "extracted " << notes.size() << " note segments." << std::endl;
-
-    // Вывод всех сегментов после сегментации
-    std::cout << "\nNote segments after segmentation (frequency Hz, duration s):\n";
-    for (size_t i = 0; i < notes.size(); ++i) {
-        std::cout << "Segment " << i << ": " << notes[i].frequency << " Hz, duration: " << notes[i].duration << " s" << std::endl;
-    }
 
     // Фильтрация по диапазону гитары (E2–C6)
     std::vector<NoteSegment> filtered_notes;
