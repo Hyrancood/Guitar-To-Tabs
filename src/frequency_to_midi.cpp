@@ -2,6 +2,8 @@
 
 #include <cmath>
 #include <stdexcept>
+#include <string>
+#include <iostream>
 
 int frequency_to_midi(double freq) {
   if (freq < 0) {
@@ -14,7 +16,8 @@ int frequency_to_midi(double freq) {
 
   int midi = static_cast<int>(std::round(69 + 12 * std::log2(freq / 440.0)));
   if (midi < min_midi || midi > max_midi) {
-    throw std::invalid_argument("Frequency is out of guitar range");
+    throw std::invalid_argument("Frequency is out of guitar range: " +
+                                std::to_string(freq) + " Hz");
   }
 
   return midi;
@@ -36,7 +39,7 @@ int max_duration(const std::vector<NoteDuration>& midi_duration) {
   int index_max = 0;
   for (size_t i = 0; i < midi_duration.size(); ++i) {
     if (midi_duration[i].duration > midi_duration[index_max].duration) {
-      index_max = i;
+      index_max = static_cast<int>(i);
     }
   }
   return index_max;
@@ -44,24 +47,36 @@ int max_duration(const std::vector<NoteDuration>& midi_duration) {
 
 std::vector<std::pair<int, int>> get_midi_beats(
     std::vector<std::pair<double, double>> frequency_duration, int bpm) {
+  std::cout << "[get_midi_beats] called, bpm=" << bpm << ", input size=" << frequency_duration.size() << std::endl;
   if (bpm <= 0) {
     throw std::invalid_argument("BPM must be positive");
   }
   for (const auto& fd : frequency_duration) {
+    std::cout << "[get_midi_beats] freq: " << fd.first << ", dur: " << fd.second << std::endl;
     if (fd.second <= 0) {
       throw std::invalid_argument("Duration must be positive");
     }
   }
 
   double len16 = 15.0 / bpm;
+  std::cout << "[get_midi_beats] len16: " << len16 << std::endl;
 
   std::vector<NoteDuration> midi_duration;
   for (size_t i = 0; i < frequency_duration.size(); ++i) {
-    midi_duration.push_back({i, frequency_to_midi(frequency_duration[i].first),
-                             frequency_duration[i].second});
+    int midi = -1;
+    if (frequency_duration[i].first > 0.0) {
+      try {
+        midi = frequency_to_midi(frequency_duration[i].first);
+      } catch (const std::exception& e) {
+        std::cerr << "[get_midi_beats] frequency_to_midi error: " << e.what() << std::endl;
+      }
+    }
+    midi_duration.push_back({i, midi, frequency_duration[i].second});
+    std::cout << "[get_midi_beats] midi_duration: num=" << i << ", midi=" << midi << ", dur=" << frequency_duration[i].second << std::endl;
   }
 
   double full_len = duration_sum(midi_duration);
+  std::cout << "[get_midi_beats] full_len: " << full_len << std::endl;
   midi_duration.push_back({midi_duration.size(), -1, len16 * 2});
   std::vector<std::pair<int, int>> midi_16beats;
   std::vector<NoteDuration> temporary;
@@ -72,8 +87,7 @@ std::vector<std::pair<int, int>> get_midi_beats(
     while (duration_sum(temporary) < len16) {
       if (midi_duration[0].duration > remainder) {
         midi_duration[0].duration -= remainder;
-        temporary.push_back(
-            {midi_duration[0].num, midi_duration[0].midi, remainder});
+        temporary.push_back({midi_duration[0].num, midi_duration[0].midi, remainder});
         break;
       } else {
         temporary.push_back(midi_duration[0]);
@@ -81,29 +95,32 @@ std::vector<std::pair<int, int>> get_midi_beats(
         midi_duration.erase(midi_duration.begin());
       }
     }
-
+    std::cout << "[get_midi_beats] temporary.size=" << temporary.size() << std::endl;
     if (temporary.size() == 1) {
       midi_16beats.push_back({temporary[0].num, temporary[0].midi});
     } else {
-      midi_16beats.push_back({temporary[max_duration(temporary)].num,
-                              temporary[max_duration(temporary)].midi});
+      midi_16beats.push_back({temporary[max_duration(temporary)].num, temporary[max_duration(temporary)].midi});
     }
+    std::cout << "[get_midi_beats] midi_16beats.size=" << midi_16beats.size() << std::endl;
   }
 
   if (!midi_16beats.empty() &&
       midi_16beats[midi_16beats.size() - 1].second == -1 &&
       full_len / len16 < static_cast<double>(midi_16beats.size()) - 0.5) {
     midi_16beats.pop_back();
+    std::cout << "[get_midi_beats] pop_back midi_16beats, new size=" << midi_16beats.size() << std::endl;
   }
 
   std::vector<std::pair<int, int>> midi_beats;
-  for (int i = 0; i < midi_16beats.size(); ++i) {
+  for (int i = 0; i < static_cast<int>(midi_16beats.size()); ++i) {
     if (i != 0 && midi_16beats[i - 1].first == midi_16beats[i].first) {
       midi_beats[midi_beats.size() - 1].second += 1;
     } else {
       midi_beats.push_back({midi_16beats[i].second, 1});
     }
+    std::cout << "[get_midi_beats] midi_beats.size=" << midi_beats.size() << std::endl;
   }
 
+  std::cout << "[get_midi_beats] returning " << midi_beats.size() << " midi beats" << std::endl;
   return midi_beats;
 }

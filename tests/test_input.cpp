@@ -24,7 +24,7 @@ TEST_CASE("AudioAnalyzer корректно анализирует амплит�
     int N = static_cast<int>(sampleRate * duration);
     std::vector<float> samples(N);
     for (int i = 0; i < N; ++i) {
-        samples[i] = std::sin(6.283 * freq * i / sampleRate);
+        samples[i] = static_cast<float>(std::sin(6.283 * freq * i / sampleRate));
     }
     auto analysis = AudioAnalyzer::analyzeAmplitudes(samples, 1);
     CHECK(analysis.amplitudes.size() == samples.size());
@@ -38,7 +38,7 @@ TEST_CASE("AudioAnalyzer корректно работает с многокан
     int N = 1000;
     std::vector<float> samples(N * 2);
     for (int i = 0; i < N; ++i) {
-        samples[2 * i] = std::sin(6.283 * 440.0f * i / N);
+        samples[2 * i] = static_cast<float>(std::sin(6.283  * 440.0f * i / N));
         samples[2 * i + 1] = 0.0f;
     }
     auto analysis = AudioAnalyzer::analyzeAmplitudes(samples, 2);
@@ -51,7 +51,7 @@ TEST_CASE("AudioAnalyzer корректно работает с многокан
 
 TEST_CASE("AudioAnalyzer считает спектр амплитуд") {
     std::vector<float> samples(1000);
-    for (int i = 0; i < 1000; ++i) samples[i] = std::sin(6.283 * 440.0f * i / 1000);
+    for (int i = 0; i < 1000; ++i) samples[i] = static_cast<float>(std::sin(6.283 * 440.0f * i / 1000));
     auto analysis = AudioAnalyzer::analyzeAmplitudes(samples, 1);
     CHECK(analysis.amplitudeSpectrum.size() == 20);
     for (float v : analysis.amplitudeSpectrum) {
