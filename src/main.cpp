@@ -74,9 +74,13 @@ int main(int argc, char* argv[]) {
     // 7. Генерация табулатуры
     // Диапазоны ладов: по умолчанию для всех струн 0-22, вся длительность
     std::vector<std::array<int, 3>> ranges = read_range(std::cin);
-    auto notes_for_tab = apply_range(ranges, midi_beats);
-    std::cout << "\nGenerated Guitar Tab:\n";
-    generate_tab(notes_for_tab, std::cout);
-
+    try {
+        auto notes_for_tab = apply_range(ranges, midi_beats);
+        std::cout << "\nGenerated Guitar Tab:\n";
+        generate_tab(notes_for_tab, std::cout);
+    } catch (const std::exception& e) {
+        std::cerr << "Ошибка при применении диапазонов: " << e.what() << std::endl;
+        return 1;
+    }
     return 0;
 }
